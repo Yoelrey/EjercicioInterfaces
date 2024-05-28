@@ -41,8 +41,7 @@
         <div class="col">
           
           <div class="card shadow-sm">
-            <img class="img" id="play_sound" src="imagenes/descarga (1).jpg" alt="100%">
-            <audio id="audio" src="Sonidos/Imagine Dragons - I Don’t Like Myself (Official Music Video).mp3"></audio>
+            <img class="img" data-sound="Sonidos/Imagine Dragons - I Don’t Like Myself (Official Music Video).mp3" src="imagenes/descarga (1).jpg" alt="100%">
             <div class="card-body">
               <h3 class="card-header">Mercury act 2</h3>
               <p class="card-text">Mercury act 2 se trata de una continuacion de Mercury act 1 manteniendolo</p>
@@ -64,8 +63,7 @@
 <div class="col">
           
   <div class="card shadow-sm">
-    <img class="img"  id="play_sound" src="imagenes/B17FYco3GQS._SL1500_.jpg" alt="100%">
-    <audio id="audio" src="Sonidos/Imagine Dragons - My Life (Official Lyric Video).mp3"></audio>
+    <img class="img"  data-sound="Sonidos/Imagine Dragons - My Life (Official Lyric Video).mp3" src="imagenes/B17FYco3GQS._SL1500_.jpg" alt="100%">
     <div class="card-body">
       <h3  class="card-header">Mercury act 1</h3>
       <p class="card-text">"Mercury act 1" es el quinto album de la banda y tine album contiene 13 canciones</p>
@@ -86,8 +84,7 @@
 
         <div class="col">
           <div class="card shadow-sm">
-            <img class="img"  id="play_sound" src="imagenes/descarga (2).jpg"  alt="100%">
-            <audio id="audio" src="Sonidos/Imagine Dragons - Natural.mp3"></audio>
+            <img class="img" data-sound="Sonidos/Imagine Dragons - Natural.mp3" src="imagenes/descarga (2).jpg"  alt="100%">
             <div class="card-body">
               <h3 class="card-header">Origins</h3>
               <p class="card-text">"Origins" cuenta con 12 canciones y con un estilo mas electronico que los previos.</p>
@@ -112,8 +109,7 @@
 
         <div class="col">
           <div class="card shadow-sm">
-            <img class="img"  id="play_sound" src="imagenes/descarga (3).jpg" alt="100%"> 
-            <audio id="audio" src="Sonidos/Imagine Dragons - Next To Me (Audio).mp3"> </audio> 
+            <img class="img"  data-sound="Sonidos/Imagine Dragons - Next To Me (Audio).mp3" src="imagenes/descarga (3).jpg" alt="100%"> 
             <div class="card-body">
               <h3 class="card-header">Evolve</h3>
               <p class="card-text">"Evolve"cuenta con 11 canciones presentando un enfoque más pop y electrónico </p>
@@ -147,8 +143,7 @@
         <div class="col">
 
           <div class="card shadow-sm">
-            <img class="img"  id="play_sound" src="imagenes/descarga (5).jpg" alt="100%">
-            <audio id="audio" src="Sonidos/Imagine Dragons - Shots.mp3"></audio>
+            <img class="img" src="imagenes/descarga (5).jpg"  data-sound="Sonidos/Imagine Dragons - Shots.mp3" alt="100%">
             <div class="card-body">
               <h3 class="card-header">Smoke + Mirrors</h3>
               <p class="card-text">"Smoke + Mirrors" cuenta con 13 canciones y es más oscuro que "Night Visions"</p>
@@ -157,7 +152,8 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://open.spotify.com/album/0Ikw6ho559687KCPbSjr0K" target="_blank">Canciones</a></button>
                   
                 </div>
-                                <small class="text-muted">2015</small>
+
+                <small class="text-muted">2015</small>
 
               </div>
             </div>
@@ -174,9 +170,8 @@
         <div class="col">
           
           <div class="card shadow-sm">
-          <img class="img" src="imagenes/descarga (6).jpg"  id="play_sound" alt="50%">
-          <audio id="audio" src="Sonidos/Imagine Dragons - Radioactive.mp3"></audio>
-            <div class="card-body">
+          <img class="img" src="imagenes/descarga (6).jpg"  data-sound="Sonidos/Imagine Dragons - Radioactive.mp3" alt="50%">
+          <div class="card-body">
               <h3 class="card-header">Night Visions Live</h3>
               <p class="card-text">Recopilacion de canciones de un concierto relacionado con Night Visions</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -203,8 +198,7 @@
         <div class="col">
          
           <div class="card shadow-sm">
-            <img class="img" id="play_sound" src="imagenes/descarga (4).jpg" alt="100%">
-            <audio src="Sonidos/Imagine Dragons - On Top Of The World (Official Music Video).mp3" id="audio"></audio>
+            <img class="img" data-sound="Sonidos/Imagine Dragons - On Top Of The World (Official Music Video).mp3" src="imagenes/descarga (4).jpg" alt="100%">
             <div class="card-body">
               <h3 class="card-header">Night Visions</h3>
               <p class="card-text">"Night Visions" cuenta con 11 canciones.Presenta un sonido rock con algo de musica electronica</p>
@@ -231,8 +225,7 @@
 
         <div class="col">
           <div class="card shadow-sm">
-            <img class="img"  id="play_sound" src="imagenes/descarga (11).jpg" alt="100%">
-            <audio src="Sonidos/Imagine Dragons - My Fault (Lyric Video).mp3" id="audio"></audio>
+            <img class="img" data-sound="Sonidos/Imagine Dragons - My Fault (Lyric Video).mp3" src="imagenes/descarga (11).jpg" alt="100%">
             <div class="card-body">
               <h3 class="card-header">Continued Silence</h3>
               <p class="card-text">"Continued Silence" es otro EP con 6 canciones lanzado un año después de "Hell and Silence".</p>
@@ -284,12 +277,26 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const image = document.getElementById("play-sound");
-    const audio = document.getElementById("audio");
+    let currentAudio = null;
+    let currentImage = null;
 
-    // Usar una función flecha para manejar el evento de clic
-    image.addEventListener("click", () => {
-      audio.play();
+    const images = document.querySelectorAll(".img[data-sound]");
+    
+    images.forEach(image => {
+      image.addEventListener("click", () => {
+        const soundSrc = image.getAttribute("data-sound");
+        if (currentAudio && currentAudio.src === soundSrc && !currentAudio.paused) {
+          currentAudio.pause();
+        } else {
+          if (currentAudio) {
+            currentAudio.pause();
+          }
+          currentAudio = new Audio(soundSrc);
+          currentAudio.play();
+          currentImage = image;
+        }
+      });
     });
   });
+</script>
 </script>
