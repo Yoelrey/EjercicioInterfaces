@@ -250,7 +250,9 @@
       </div>
     </div>
   </div>
-
+  <div class="text-center">
+    <button id="stop-sounds" class="btn btn-danger my-4">Parar todos los sonidos</button>
+  </div>
 </main>
 
 <footer class="text-muted py-5">
@@ -278,9 +280,10 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     let currentAudio = null;
-    let currentImage = null;
+    const audios = [];
 
     const images = document.querySelectorAll(".img[data-sound]");
+    const stopButton = document.getElementById("stop-sounds");
     
     images.forEach(image => {
       image.addEventListener("click", () => {
@@ -292,10 +295,15 @@
             currentAudio.pause();
           }
           currentAudio = new Audio(soundSrc);
+          audios.push(currentAudio);
           currentAudio.play();
-          currentImage = image;
         }
       });
+    });
+
+    stopButton.addEventListener("click", () => {
+      audios.forEach(audio => audio.pause());
+      currentAudio = null;
     });
   });
 </script>
