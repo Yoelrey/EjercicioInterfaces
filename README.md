@@ -1,5 +1,6 @@
 Pequeña web realizada mediante plantillas de bootstrap.
 Aqui la podras observar: https://yoelrey.github.io/EjercicioInterfaces/
+
 Leyes de UX que se cumplen:
 1. Ley de Hick (Ley de Hick-Hyman):
 
